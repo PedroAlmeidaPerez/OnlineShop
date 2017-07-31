@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Products</title>
+</head>
+
+<body>
+<h1>List of Products of Category</h1>
+
+<table cellpadding="2" cellspacing="2" border="1">
+    <tr th:each="product : ${products}">
+        <td><pan th:text="${product.id}"></pan>
+            <pan th:text="${product.name}"></pan></td>
+        <td><pan th:text="${product.description}"></pan></td>
+        <!--<td><pan th:text="${product.img}"></pan></td>-->
+        <td><img width="120" height="100" th:src="@{'/images/' + ${product.img}}"/></td>
+        <td><pan th:text="${product.price}"></pan></td>
+        <td><a th:href="@{'/products/' + ${product.id}}"> Info </a></td>
+        <!--<td><a th:href="@{'/products/' + ${product.id}}">Info</a></td>-->
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>categories</title>
+</head>
+
+<body>
+<h1>List of categories</h1>
+
+<table cellpadding="2" cellspacing="2" border="1">
+    <tr th:each="category : ${categories}">
+        <td><pan th:text="${category.id}"></pan></td>
+        <td><pan th:text="${category.name}"></pan></td>
+        <td><a th:href="@{'/categories/' + ${category.id}}"> Show More </a></td>
+        <!--<td><a th:href="@{'/categorys/' + ${category.id}}">Info</a></td>-->
+    </tr>
+</table>
+</body>
+</html>

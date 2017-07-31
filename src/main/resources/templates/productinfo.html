@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Products Info</title>
+</head>
+<body>
+
+<h1>Product info </h1>
+<table cellpadding="2" cellspacing="2" border="1">
+    <tr>
+        <th>Id</th>
+        <td><span th:text="${product.id}"></span></td>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <td><span th:text="${product.name}"></span></td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td><span th:text="${product.description}"></span></td>
+    </tr>
+    <tr>
+        <th>Image</th>
+        <td><img width="120" height="100" th:src="@{'/images/' + ${product.img}}"/></td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td><span th:text="${product.price}"></span></td>
+    </tr>
+</table>
+
+</body>
+</html>
