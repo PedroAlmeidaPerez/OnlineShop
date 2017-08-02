@@ -1,14 +1,6 @@
 package com.task2.student2.security;
 
-import com.task2.student2.model.User;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.util.StringUtils;
-
-import java.util.Collection;
-import java.util.List;
-
+/*
 public class CustomUserDetails extends User implements UserDetails {
 	
 	private static final long serialVersionUID = 1L;
@@ -54,4 +46,4 @@ public class CustomUserDetails extends User implements UserDetails {
 	}
 
 
-}
+}*/

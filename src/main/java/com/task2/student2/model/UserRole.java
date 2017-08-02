@@ -1,47 +1,39 @@
 package com.task2.student2.model;
 
-import com.task2.student2.Enum.Role;
-
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Set;
 
 @Entity
-@Table(name = "userrole")
-public class UserRole{
+@Table(name = "role")
+public class UserRole {
+    private Long id;
+    private String name;
+    private Set<User> users;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="user_role_id")
-    private Long userroleid;
-
-    @Column(name="user_id")
-    private Long userid;
-
-    @Column(name = "role", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
-    public Long getUserroleid() {
-        return userroleid;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserroleid(Long userroleid) {
-        this.userroleid = userroleid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getUserid() {
-        return userid;
+    public String getName() {
+        return name;
     }
 
-    public void setUserid(Long userid) {
-        this.userid = userid;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Role getRole() {
-        return role;
+    @ManyToMany(mappedBy = "roles")
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }
-

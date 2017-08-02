@@ -1,5 +1,5 @@
 package com.task2.student2.controller;
-import com.task2.student2.service.ProductService;
+import com.task2.student2.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class DefaultController {
     @Autowired
-    private ProductService productService;
+    private ProductServiceImpl productServiceImpl;
 
     @GetMapping("/")
     public String home1() {
@@ -23,13 +23,13 @@ public class DefaultController {
 
     @GetMapping("/admin")
     public String admin(Model modelAndView) {
-        modelAndView.addAttribute("products", productService.getAllProducts());
+        modelAndView.addAttribute("products", productServiceImpl.getAllProducts());
         return "adminproducts";
     }
 
    @RequestMapping("/user")
    public String getUserProductsView(Model modelAndView){
-       modelAndView.addAttribute("products", productService.getAllProducts());
+       modelAndView.addAttribute("products", productServiceImpl.getAllProducts());
        return "/user/userproducts";
     }
     /*@Autowired
@@ -48,7 +48,7 @@ public class DefaultController {
 
     @GetMapping("/productspublic")
     public String getProductsView(Model modelAndView){
-        modelAndView.addAttribute("products", productService.getAllProducts());
+        modelAndView.addAttribute("products", productServiceImpl.getAllProducts());
         return "/productspublic";
     }
 

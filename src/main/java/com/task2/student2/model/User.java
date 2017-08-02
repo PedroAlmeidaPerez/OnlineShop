@@ -1,70 +1,33 @@
 package com.task2.student2.model;
 
-import com.task2.student2.Enum.Role;
-
 import javax.persistence.*;
-import java.io.Serializable;
-
+import java.util.Set;
 
 @Entity
-@Table (name = "customers")
-public class User  implements Serializable {
+@Table(name = "users")
+public class User {
+    private Long id;
+    private String username;
+    private String password;
+    private String passwordConfirm;
+    private Set<UserRole> roles;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="user_id")
-    private Long userId;
-
-    @Column(name = "username", nullable = false)
-    private String userName;
-
-    @Column(name = "password", nullable = false)
-    private String password;
-
-    @Column(name = "role", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "enabled")
-    private int enabled;
-
-    /*@Column(name = "role", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
-*/
-
-    public User() {
+    public Long getId() {
+        return id;
     }
 
-
-
-    public User(User user) {
-        this.userId = user.userId;
-        this.userName = user.userName;
-        this.email = user.email;
-        this.password = user.password;
-        this.role = user.role;
-        this.enabled=user.enabled;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -75,27 +38,22 @@ public class User  implements Serializable {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    @Transient
+    public String getPasswordConfirm() {
+        return passwordConfirm;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 
-    public int getEnabled() {
-        return enabled;
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    public Set<UserRole> getRoles() {
+        return roles;
     }
 
-    public void setEnabled(int enabled) {
-        this.enabled = enabled;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Set<UserRole> roles) {
+        this.roles = roles;
     }
 }

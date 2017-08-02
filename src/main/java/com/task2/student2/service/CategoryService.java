@@ -1,5 +1,6 @@
 package com.task2.student2.service;
 
+import com.task2.student2.model.Category;
 import com.task2.student2.model.Product;
 import com.task2.student2.repository.CategoryRepository;
 import com.task2.student2.repository.ProductRepository;
@@ -21,21 +22,21 @@ public class CategoryService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<com.task2.student2.model.Category> getAllcategories(){
-        List<com.task2.student2.model.Category> categories = new ArrayList<>();
+    public List<Category> getAllcategories(){
+        List<Category> categories = new ArrayList<>();
         categoryRepository.findAll().forEach(categories::add);
         return categories;
     }
 
-    public void addCategory(com.task2.student2.model.Category category){
+    public void addCategory(Category category){
         categoryRepository.save(category);
     }
 
-    public com.task2.student2.model.Category getcategoryById(int id){
+    public Category getcategoryById(int id){
         return categoryRepository.findOne(id);
     }
 
-    public void updateCategory(com.task2.student2.model.Category category){
+    public void updateCategory(Category category){
         addCategory(category);
     }
 
@@ -43,7 +44,7 @@ public class CategoryService {
         categoryRepository.delete(id);
     }
 
-    public List<Product> getAllProductsFromCategory(int id){
+    public Iterable<Product> getAllProductsFromCategory(int id){
         return productRepository.findAllByCategoryId(id);
     }
 
