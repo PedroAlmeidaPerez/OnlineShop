@@ -1,9 +1,7 @@
 package com.task2.student2.service;
-/*
-import com.task2.student2.model.User;
+
 import com.task2.student2.model.UserRole;
-import com.task2.student2.repository.RolRepository;
-import com.task2.student2.repository.UserRepository;
+import com.task2.student2.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,19 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class RolService {
+public class RoleService {
     @Autowired
-    private RolRepository rolRepository;
+    private RoleRepository roleRepository;
 
 
-    public List<UserRole> getAllRols(){
+    public List<UserRole> getAllRoles(){
         List<UserRole> rols = new ArrayList<>();
-        rolRepository.findAll().forEach(rols::add);
+        roleRepository.findAll().forEach(rols::add);
         return rols;
     }
 
     public void addRole(UserRole userRole){
-        rolRepository.save(userRole);
+        roleRepository.save(userRole);
     }
 }
-*/

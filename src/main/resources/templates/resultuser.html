@@ -7,11 +7,12 @@
 <body>
 <h1>User added</h1>
 <p th:text="'id: ' + ${user.id}" />
-<p th:text="'description: ' + ${user.userName}" />
-<p th:text="'description: ' + ${user.password}" />
-<p th:text="'description: ' + ${user.role}" />
-
+<p th:text="'Name: ' + ${user.username}" />
+<p th:text="'Password: ' + ${user.password}" />
+<p th:each="role : ${user.roles}" th:text="'Roles: ' + ${role.name}" />
+<!--<p th:text="'Email: ' + ${user.email}" />
+-->
 <a href="/createuser">Submit another user</a>
-<a href="/">Go to user list</a>
+<a href="/admin/allusers">Go to user list</a>
 </body>
 </html>

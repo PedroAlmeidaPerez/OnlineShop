@@ -17,31 +17,16 @@ import java.util.List;
 
 //
 @Service
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService{
 
     @Autowired
     private ProductRepository productRepository;
 
-    public Iterable<Product> getAllProducts(){//(SortingProductsOptions sortingProductsOptions){
-//        switch (sortingProductsOptions) {
-//            case sortByNameAsc:
-//                return productRepository.findAllByOrderByNameAsc();
-//            case sortByNameDesc:
-//                return productRepository.findAllByOrderByNameDesc();
-//            case sortByPriceAsc:
-//
-//            case sortByPriceDesc:
-//
-//        }
+    public Iterable<Product> getAllProducts(){
         List<Product> products = new ArrayList<>();
         productRepository.findAll().forEach(products::add);
         return products;
     }
-
-    /*public void addProduct(Product product){
-        productRepository.save(product);
-    }*/
-
 
     public void addProduct(Product product){
         productRepository.save(product);
@@ -50,6 +35,7 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductById(int id){
         return productRepository.findOne(id);
     }
+
     public Product getProduct(int id){
         return productRepository.findOne(id);
     }
@@ -92,9 +78,4 @@ public class ProductServiceImpl implements ProductService {
         return null;
     }
 
-//    private PageRequest gotoPage(int page)
-//    {
-//        PageRequest request = ;
-//        return request;
-//    }
 }

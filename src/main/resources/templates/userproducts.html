@@ -9,12 +9,21 @@
 <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 <label for="sortingTypes">Sorting type:</label>
 
-
 <select th:field="*{sortingTypes}" onchange="location.href = this.value;">
     <option th:each="sortingType : ${sortingTypes}"
-            th:value="'/user/products=' + ${sortingType.urlRef}" th:text="${sortingType.description}">
+            th:value="'/user/products?sortdir=' + ${sortingType.sortingDirection} + '&amp;sortprop=' + ${sortingType.sortingProperty}" th:text="${sortingType.description}">
     </option>
 </select>
+<!--<p th:text="${#request.getParameter('page')}" th:unless="${#request.getParameter('page') == null}">Parametr</p>-->
+<tr>
+    <td><a th:href="@{/user/products(page=${parameters.pagePrevious}, sortdir=${parameters.sortingDirection}, sortprop=${parameters.sortingProperty}, pageSize=${parameters.pageSize})}"> Left </a></td>
+    <td><a th:href="@{/user/products(page=${parameters.pageNext}, sortdir=${parameters.sortingDirection}, sortprop=${parameters.sortingProperty}, pageSize=${parameters.pageSize})}">   Right  </a></td>
+</tr>
+<!--<select th:field="*{parameters.pageSizes}" onchange="location.href = this.value;">-->
+    <!--<option th:each="size : ${parameters.pageSizes}"-->
+            <!--th:value="@{/user/products(page=${parameters.pageNumber}, sortdir=${parameters.sortingDirection}, sortprop=${parameters.sortingProperty}, pageSize=${size})}" th:text="${size}">-->
+    <!--</option>-->
+<!--</select>-->
 <table cellpadding="2" cellspacing="2" border="1">
     <tr th:each="product : ${products}">
         <td><pan th:text="${product.id}"></pan>
@@ -25,7 +34,6 @@
         <td><pan th:text="${product.price}"></pan></td>
         <td><a th:href="@{'/products/' + ${product.id}}"> Info </a></td>
     </tr>
-
 </table>
 
 

@@ -1,7 +1,8 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Test</title>
+    <meta charset="UTF-8"/>
+    <title>List of users</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -11,24 +12,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
 
-
 </head>
+
 <body>
-
 <div th:replace="fragments/header :: header"/>
+<h1 th:inline="text">[[${#httpServletRequest.remoteUser}]] Mode!</h1>
+<h1>List of Users</h1>
 
-<div class="container">
+<table class="table">
 
-    <div class="starter-template">
-        <h1>Menu</h1>
-        <h2>1. Visit <a th:href="@{/admin}">Admin page (Need Admin Role)</a></h2>
-        <h2>2. Visit <a th:href="@{/user/products}">User page (Need User Role)</a></h2>
-        <h2>3. Visit <a th:href="@{/productspublic}">Guest page</a></h2>
-    </div>
-
-</div>
-<!-- /.container -->
-
+    <tr th:each="user : ${users}">
+        <td><pan th:text="${user.id}"></pan></td>
+        <td><pan th:text="${user.username}"></pan></td>
+        <td><pan th:each="role : ${user.roles}" th:text="${role.name}"></pan></td>
+        <td><a th:href="@{'/admin/user/delete/' + ${user.id}}"> Delete </a></td>
+        <!--<p th:each="role : ${user.roles}" th:text="'Roles: ' + ${role.name}" />-->
+        <!--<td><pan th:text="${user.name}"></pan></td>-->
+    </tr>
+    
+</table>
 <div th:replace="fragments/footer :: footer"/>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"

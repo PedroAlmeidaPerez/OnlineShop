@@ -68,13 +68,13 @@
              <groupId>org.springframework.boot</groupId>
              <artifactId>spring-boot-starter-security</artifactId>
          </dependency>
+-->
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
-         <dependency>
-             <groupId>org.hsqldb</groupId>
-             <artifactId>hsqldb</artifactId>
-             <scope>runtime</scope>
-         </dependency>
- -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -111,13 +111,19 @@
             <version>3.12.1.GA</version>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>org.hibernate</groupId>-->
-        <!--<artifactId>hibernate-entitymanager</artifactId>-->
-        <!--<version>${hibernate.version}</version>-->
-        <!--</dependency>-->
+        <!--dependencies for web design-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>3.3.7-1</version>
+        </dependency>
 
-
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.1.1-1</version>
+        </dependency>
+        <!--depencies for web design-->
 
         <dependency>
             <groupId>org.postgresql</groupId>

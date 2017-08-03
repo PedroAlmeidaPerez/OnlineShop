@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class DefaultController {
@@ -27,11 +26,12 @@ public class DefaultController {
         return "adminproducts";
     }
 
-   @RequestMapping("/user")
-   public String getUserProductsView(Model modelAndView){
+   //@RequestMapping("/user")
+   /* @GetMapping("/user")
+    public String getUserProductsView(Model modelAndView){
        modelAndView.addAttribute("products", productServiceImpl.getAllProducts());
        return "/user/userproducts";
-    }
+    }*/
     /*@Autowired
     private ProductService productService;
     //    Model modelAndView;

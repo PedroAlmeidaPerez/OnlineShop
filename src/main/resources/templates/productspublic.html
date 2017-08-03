@@ -1,25 +1,94 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Products</title>
-</head>
-<body>
-<h1>List of Products</h1>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Solsoft Clothes Store</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Online store where you can buy clothes." />
+        <meta name="keywords" content="clothes online store onlinestore" />
+        <meta name="author" content="Team2" />
+        
+        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+        <link href="css/reset.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+        <script src="js/script.js"></script> 
 
-<table cellpadding="2" cellspacing="2" border="1">
-    <tr th:each="product : ${products}">
-        <td><pan th:text="${product.id}"></pan>
-            <pan th:text="${product.name}"></pan></td>
-        <td><pan th:text="${product.description}"></pan></td>
-        <!--<td><pan th:text="${product.img}"></pan></td>-->
-        <td><img width="120" height="100" th:src="@{'/images/' + ${product.img}}"/></td>
-        <td><pan th:text="${product.price}"></pan></td>
-        <td><a th:href="@{'/products/' + ${product.id}}"> Info </a></td>
-    </tr>
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
-</table>
+    <body>
+        <!-- jumbotron -->
+            <div class="jumbotron">
+                <div class="container text-center">
+                    <h1>Online Store</h1>
+                    <p id="jumbotron-smaller-text">Style &amp; Fashion</p>
+                </div>
+            </div>
 
-
-</body>
+        <!-- navigation -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"></a> 
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a th:href="@{/}">Home</a></li>
+                        <li class="active"><a th:href="@{/productspublic}">Products</a></li>
+                        <li><a href="#">Category</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">>
+                        <li><a th:href="@{/user}">Log in</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>     
+        
+        <div class="container">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>Price</th>
+                      <th>Image</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="product : ${products}">
+                        <td>>
+                            <pan th:text="${product.name}"></pan>
+                        </td>
+                        <td>
+                            <pan th:text="${product.description}"></pan>
+                        </td>
+                        <!--<td><pan th:text="${product.img}"></pan></td>-->
+                        <td>
+                            <img width="120" height="100" th:src="@{'/images/' + ${product.img}}"/>
+                        </td>
+                        <td>
+                            <pan th:text="${product.price}"></pan>
+                        </td>
+                        <td>
+                            <a th:href="@{'/products/' + ${product.id}}"> Info </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <footer class="container-fluid text-center">
+            <p>
+                "Solsoft Clothes Store Style &amp; Fashion"<br />
+                123 456 789, email@example.com
+            </p>
+        </footer>
+        
+        <script src="js/jquery/jquery-3.2.1.min.js"></script>
+        <script src="js/bootstrap/bootstrap.js"></script>
+    </body>
 </html>
